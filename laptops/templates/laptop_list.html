@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Laptops</h1>
+  <p><a href="{% url 'laptop_create' %}">Add Laptop</a></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for laptop in laptops %}
+        <tr>
+          <td>{{ laptop.brand }}</td>
+          <td>{{ laptop.model }}</td>
+          <td>{{ laptop.price }}</td>
+          <td><a href="{% url 'laptop_update' laptop.pk %}">Edit</a></td>
+          <td><a href="{% url 'laptop_delete' laptop.pk %}">Delete</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
